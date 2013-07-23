@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %-5level [%thread][%logger{0}] %m%n</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- SLIPP Logger -->
+	<logger name="net.slipp" level="DEBUG" />
+
+	<!-- Library / Framework Logger -->
+	<logger name="org.hibernate" level="WARN" />
+	<logger name="org.hibernate.SQL" level="DEBUG" />
+	<logger name="org.hibernate.type" level="WARN" />
+	<logger name="org.hibernate.type.BasicTypeRegistry" level="WARN" />
+	<logger name="org.hibernate.descriptor.sql.BasicExtractor" level="WARN" />
+	<logger name="org.springframework" level="INFO" />
+	<logger name="org.springframework.web.bind.annotation.support.HandlerMethodInvoker" level="INFO" />
+	<logger name="org.springframework.web.servlet.DispatcherServlet" level="INFO" />
+	
+	<!-- ROOT Logger -->
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
