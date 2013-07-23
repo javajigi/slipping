@@ -21,7 +21,13 @@
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>    
+	</filter-mapping> 
+	
+	<servlet>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<servlet-class>net.slipp.support.web.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
     
 	<servlet>
 		<servlet-name>H2Console</servlet-name>
@@ -32,9 +38,14 @@
 		</init-param>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>	
 
 	<servlet-mapping>
 		<servlet-name>H2Console</servlet-name>
 		<url-pattern>/admin/h2/*</url-pattern>
-	</servlet-mapping>    
+	</servlet-mapping> 
 </web-app>
