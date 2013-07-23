@@ -18,7 +18,7 @@
               <li><a href="/user/join.jsp">회원가입</a></li>              
               </c:when>
               <c:otherwise>
-              <li><a href="/user/logout_action.jsp">로그아웃</a></li>
+              <li><a href="/user/logout.do">로그아웃</a></li>
               <li><a href="/user/update.jsp">개인정보수정</a></li>              
               </c:otherwise>
               </c:choose>
