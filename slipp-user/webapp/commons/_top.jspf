@@ -14,11 +14,11 @@
               <li><a href="/">Home</a></li>
               <c:choose>
               <c:when test="${empty loginUser}">
-              <li><a href="/user/login/form.do">로그인</a></li>
-              <li><a href="/user/join/form.do">회원가입</a></li>              
+              <li><a href="/users/login/form">로그인</a></li>
+              <li><a href="/users/form">회원가입</a></li>              
               </c:when>
               <c:otherwise>
-              <li><a href="/user/logout.do">로그아웃</a></li>
+              <li><a href="/users/logout">로그아웃</a></li>
               <li><a href="/user/update/form.do">개인정보수정</a></li>              
               </c:otherwise>
               </c:choose>
