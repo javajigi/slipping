@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    version="2.5"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-    <display-name>slipp-atdd</display-name>
-    <description>SLiPP ATDD</description>
-    
+	version="2.5"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>slipp-atdd</display-name>
+	<description>SLiPP ATDD</description>
+
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -21,14 +21,29 @@
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping> 
+	</filter-mapping>
+
+	<!-- spring framework -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:/applicationContext-slipp.xml
+		</param-value>
+	</context-param>
+
 	<servlet>
-		<servlet-name>DispatcherServlet</servlet-name>
-		<servlet-class>net.slipp.support.web.DispatcherServlet</servlet-class>
+		<servlet-name>slipp</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-    
+	
 	<servlet>
 		<servlet-name>H2Console</servlet-name>
 		<servlet-class>org.h2.server.web.WebServlet</servlet-class>
@@ -38,14 +53,14 @@
 		</init-param>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
-	
+		
 	<servlet-mapping>
-		<servlet-name>DispatcherServlet</servlet-name>
-		<url-pattern>*.do</url-pattern>
-	</servlet-mapping>	
+		<servlet-name>slipp</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>H2Console</servlet-name>
 		<url-pattern>/admin/h2/*</url-pattern>
-	</servlet-mapping> 
+	</servlet-mapping>
 </web-app>
