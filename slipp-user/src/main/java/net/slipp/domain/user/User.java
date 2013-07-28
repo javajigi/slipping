@@ -1,5 +1,7 @@
 package net.slipp.domain.user;
 
+import net.slipp.service.user.PasswordMismatchException;
+
 public class User {
 	private String userId;
 	private String password;
@@ -54,6 +56,16 @@ public class User {
 		}
 		
 		return loginPassword.equals(password);
+	}
+	
+	public void update(User updateUser) throws PasswordMismatchException {
+		if (!matchPassword(updateUser.password)) {
+			throw new PasswordMismatchException();
+		}
+		
+		this.password = updateUser.password;
+		this.name = updateUser.name;
+		this.email = updateUser.email;
 	}
 	
 	@Override

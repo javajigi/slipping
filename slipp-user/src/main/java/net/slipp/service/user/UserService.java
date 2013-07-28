@@ -41,4 +41,12 @@ public class UserService {
 		UserDao userDao = new UserDao();
 		return userDao.findByUserId(userId);
 	}
+
+	public void update(String userId, User updateUser) throws SQLException, PasswordMismatchException {
+		User user = findByUserId(userId);
+		if (user == null) {
+			throw new NullPointerException(userId + " user doesn't existed.");
+		}
+		user.update(updateUser);
+	}
 }

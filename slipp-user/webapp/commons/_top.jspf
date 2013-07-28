@@ -19,7 +19,7 @@
               </c:when>
               <c:otherwise>
               <li><a href="/users/logout">로그아웃</a></li>
-              <li><a href="/user/update/form.do">개인정보수정</a></li>              
+              <li><a href="/users/${loginUser.userId}/form">개인정보수정</a></li>              
               </c:otherwise>
               </c:choose>
             </ul>
