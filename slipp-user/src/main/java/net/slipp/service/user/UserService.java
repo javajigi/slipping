@@ -2,14 +2,29 @@ package net.slipp.service.user;
 
 import java.sql.SQLException;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import net.slipp.dao.user.UserDao;
 import net.slipp.domain.user.User;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserService {
 	private static Logger log = LoggerFactory.getLogger(UserService.class);
+	
+	@PostConstruct
+	public void initialize() {
+		log.debug("initialize");
+	}
+	
+	@PreDestroy
+	public void destroy() {
+		log.debug("destroy");
+	}	
 
 	public User join(User user) throws SQLException, ExistedUserException {
 		log.debug("User : {}", user);
