@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ApplicationContextTest {
 	@Test
 	public void isSingleton() throws Exception {
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext-slipp.xml");
 		UserService userService1 = context.getBean(UserService.class);
 		UserService userService2 = context.getBean(UserService.class);
 		assertTrue(userService1 == userService2);
