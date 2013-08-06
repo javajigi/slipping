@@ -7,5 +7,7 @@ import net.slipp.domain.user.User;
 public interface UserDao {
 	void insert(User user) throws SQLException;
 	
+	void update(User user) throws SQLException;
+	
 	User findByUserId(String userId) throws SQLException;
 }

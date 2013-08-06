@@ -2,8 +2,6 @@ package net.slipp.service.user;
 
 import java.sql.SQLException;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 
 import net.slipp.dao.user.UserDao;
@@ -17,23 +15,13 @@ import org.springframework.stereotype.Service;
 public class UserService {
 	private static Logger log = LoggerFactory.getLogger(UserService.class);
 	
-	@Resource(name="memoryUserDao")
+	@Resource(name="userDao")
 	private UserDao userDao;
 	
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
 	
-	@PostConstruct
-	public void initialize() {
-		log.debug("initialize");
-	}
-	
-	@PreDestroy
-	public void destroy() {
-		log.debug("destroy");
-	}	
-
 	public User join(User user) throws SQLException, ExistedUserException {
 		log.debug("User : {}", user);
 		User existedUser = userDao.findByUserId(user.getUserId());
@@ -68,5 +56,6 @@ public class UserService {
 			throw new NullPointerException(userId + " user doesn't existed.");
 		}
 		user.update(updateUser);
+		userDao.update(user);
 	}
 }
