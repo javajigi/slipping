@@ -3,32 +3,15 @@ package net.slipp.dao.user;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.annotation.PostConstruct;
-import javax.sql.DataSource;
-
 import net.slipp.domain.user.User;
+import net.slipp.support.AbstractDaoSupport;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
-import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
-import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.stereotype.Repository;
 
 @Repository("userDao")
-public class SpringJdbcUserDao extends JdbcDaoSupport implements UserDao {
-	@Autowired
-	private DataSource dataSource;
-
-	@PostConstruct
-	public void initialize() {
-		setDataSource(dataSource);
-		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-		populator.addScript(new ClassPathResource("user.sql"));
-		DatabasePopulatorUtils.execute(populator, dataSource);		
-	}
+public class SpringJdbcUserDao extends AbstractDaoSupport implements UserDao {
 
 	@Override
 	public void insert(User user) throws SQLException {
@@ -40,7 +23,6 @@ public class SpringJdbcUserDao extends JdbcDaoSupport implements UserDao {
 	public void update(User user) throws SQLException {
 		String sql = "UPDATE USERS SET name=?, email=? WHERE userId=?";
 		getJdbcTemplate().update(sql, user.getName(), user.getEmail(), user.getUserId());
-
 	}
 
 	@Override
