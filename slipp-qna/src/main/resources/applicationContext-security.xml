@@ -1,0 +1,37 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+    <global-method-security pre-post-annotations="enabled" />
+
+    <http pattern="/resources*/**" security="none"/>
+    
+    <http use-expressions="true">
+        <intercept-url pattern="/qna/form" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/qna" method="POST" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/qna/*/form" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/qna" method="PUT" access="hasRole('ROLE_USER')"/>
+    
+        <intercept-url pattern="/**" access="permitAll" />
+
+        <form-login 
+            login-processing-url="/security/login" 
+            login-page="/security/form"
+            default-target-url="/" 
+            always-use-default-target="false" />
+
+        <logout logout-url="/security/logout" logout-success-url="/" />
+    </http>
+    
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider ref="authenticationProvider"/>
+    </authentication-manager>
+    
+    <beans:bean id="authenticationProvider" class="net.slipp.support.security.SlippAuthenticationProvider" />
+    
+    <beans:bean id="userDetailsService" class="net.slipp.support.security.SlippUserDetailsService"/>
+    
+    <beans:bean id="sessionService" class="net.slipp.support.security.SessionService" />   
+</beans:beans>
+

@@ -27,45 +27,30 @@ public class UserController {
 	}
 
 	@RequestMapping("/form")
-	public String createForm(Model model, HttpSession session) {
-		if ( !isLogin(session)) {
-			return "redirect:/user/login/form";
-		}
+	public String createForm(Model model) {
 		model.addAttribute("user", new User());
 		return "user/form";
 	}
 
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public String create(User user, Model model, HttpSession session) {
-		if ( !isLogin(session)) {
-			return "redirect:/user/login/form";
-		}
-		
+	public String create(User user, Model model) {
 		try {
 			userService.create(user);
 		} catch (ExistedUserException e) {
 		}
-		return "redirect:/user";
+		return "redirect:user";
 	}
 
 	@RequestMapping("/{userId}/form")
-	public String updateForm(@PathVariable String userId, Model model, HttpSession session) {
-		if ( !isLogin(session)) {
-			return "redirect:/user/login/form";
-		}
-		
+	public String updateForm(@PathVariable String userId, Model model) {
 		model.addAttribute("user", userService.findUser(userId));
 		return "user/form";
 	}
 
 	@RequestMapping(value = "", method = RequestMethod.PUT)
-	public String update(User user, Model model, HttpSession session) {
-		if ( !isLogin(session)) {
-			return "redirect:/user/login/form";
-		}
-		
+	public String update(User user, Model model) {
 		userService.update(user);
-		return "redirect:/user";
+		return "redirect:user";
 	}
 	
 	@RequestMapping("/login/form")
@@ -82,12 +67,5 @@ public class UserController {
 			return "user/login";
 		}
 		return "redirect:/";
-	}
-	
-	private boolean isLogin(HttpSession session) {
-		if ( session.getAttribute("user") == null ) {
-			return false;
-		}
-		return true;
 	}
 }

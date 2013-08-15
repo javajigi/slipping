@@ -12,22 +12,12 @@
     </context:component-scan>
 
     <mvc:annotation-driven>
-    <!-- 
         <mvc:argument-resolvers>
             <bean class="net.slipp.support.web.argumentresolver.LoginUserHandlerMethodArgumentResolver"
                 p:sessionService-ref="sessionService" />
         </mvc:argument-resolvers>
-     -->
     </mvc:annotation-driven>
 
-    <!-- 
-    <mvc:interceptors>
-        <bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
-        <bean class="net.slipp.support.ress.RessInterceptor" 
-          p:mobileDecorator="mobile_default" />
-    </mvc:interceptors>
-     -->
-     
     <mvc:resources mapping="/resources/**" location="/WEB-INF/static_resources/" />
 
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

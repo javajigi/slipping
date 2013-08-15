@@ -2,16 +2,16 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.slipp</groupId>
-	<artifactId>slipp-qna-simple</artifactId>
+	<artifactId>slipp-qna</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 
 	<properties>
 		<environment>local</environment>
-		<org.slf4j.version>1.6.4</org.slf4j.version>
 		<jpa.version>2.0.0</jpa.version>
 		<hibernate.version>3.5.6-Final</hibernate.version>
-		<org.springframework.version>3.1.1.RELEASE</org.springframework.version>
+		<org.springframework.version>3.1.2.RELEASE</org.springframework.version>
+		<org.slf4j.version>1.6.4</org.slf4j.version>
 		<org.springframework.security.version>3.1.0.RELEASE</org.springframework.security.version>
 		<jetty.version>6.1.22</jetty.version>
 	</properties>
@@ -42,7 +42,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>1.3.167</version>
+			<version>1.3.159</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -119,7 +119,6 @@
 			<artifactId>spring-test</artifactId>
 			<version>${org.springframework.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>

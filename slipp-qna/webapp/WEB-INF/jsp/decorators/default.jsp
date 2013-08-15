@@ -19,10 +19,11 @@
                 <li>
                     <sec:authorize access="!hasRole('ROLE_USER')">
                     <a href="/security/form">로그인</a>
+                    <a href="/user/form">회원가입</a>
                     </sec:authorize>
                     <sec:authorize access="hasRole('ROLE_USER')">
                     <a href="/security/logout">로그아웃</a>
-                    </sec:authorize>
+                    </sec:authorize>                    
                 </li>
             </ul>
             <div id="title">
