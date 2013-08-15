@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>질문 답변 게시판</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" media="screen" href="../WEB-INF/static_resources/stylesheets/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<div id="header">
+		<div id="logo">
+			<a href="/">SLiPP</a>
+		</div>
+		<ul id="tools">
+			<li><a href="/security/logout">로그아웃</a></li>
+		</ul>
+		<div id="title">
+			<h2>지속 가능한 삶, 프로그래밍, 프로그래머</h2>
+		</div>
+	</div>
+
+	<div id="main">
+		<table>
+			<tbody>
+				<tr>
+					<td height="400" valign="top">
+						<table>
+							<tbody>
+								<tr>
+									<td width="400">제목</td>
+									<td width="100">글쓴이</td>
+									<td width="150">생성일</td>
+								</tr>
+
+								<tr>
+									<td width="400"><a href="/qna/1">태그 질문 게시판 제목</a></td>
+									<td width="100">박재성</td>
+									<td width="150">2012-04-21 04:34:19</td>
+								</tr>
+
+								<tr>
+									<td colspan="3">
+										<!--페이지영역 -->
+										<div class="pageBox">
+											<span class="paging"><a href="#" class="active">1</a></span>
+										</div> <!--페이지영역 -->
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+					<td height="400" valign="top">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+									   java X 1 <br> 
+									   javascript X 0 <br> 
+									   jquery X 0 <br> 
+									   eclipse X 1 <br>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<br> <a href="/qna/form">질문하기</a>
+	</div>
+
+
+
+	<p id="footer">This is SLiPP TDD Lecture Sample</p>
+</body>
+</html>

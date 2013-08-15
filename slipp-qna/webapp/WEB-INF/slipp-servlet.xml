@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+    <context:component-scan base-package="net.slipp.web">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+
+    <mvc:annotation-driven>
+    <!-- 
+        <mvc:argument-resolvers>
+            <bean class="net.slipp.support.web.argumentresolver.LoginUserHandlerMethodArgumentResolver"
+                p:sessionService-ref="sessionService" />
+        </mvc:argument-resolvers>
+     -->
+    </mvc:annotation-driven>
+
+    <!-- 
+    <mvc:interceptors>
+        <bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
+        <bean class="net.slipp.support.ress.RessInterceptor" 
+          p:mobileDecorator="mobile_default" />
+    </mvc:interceptors>
+     -->
+     
+    <mvc:resources mapping="/resources/**" location="/WEB-INF/static_resources/" />
+
+    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+        <property name="order" value="1" />
+    </bean>
+</beans>
