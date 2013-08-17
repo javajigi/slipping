@@ -11,7 +11,7 @@
 		<jpa.version>2.0.0</jpa.version>
 		<hibernate.version>3.5.6-Final</hibernate.version>
 		<org.springframework.version>3.1.2.RELEASE</org.springframework.version>
-		<org.slf4j.version>1.6.4</org.slf4j.version>
+		<org.slf4j.version>1.7.5</org.slf4j.version>
 		<org.springframework.security.version>3.1.0.RELEASE</org.springframework.security.version>
 		<jetty.version>6.1.22</jetty.version>
 	</properties>
@@ -186,6 +186,11 @@
 			<artifactId>commons-lang</artifactId>
 			<version>2.5</version>
 		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
 
 		<!-- Sitemesh -->
 		<dependency>
@@ -194,14 +199,6 @@
 			<version>2.4.2</version>
 		</dependency>
 	</dependencies>
-
-	<repositories>
-		<repository>
-			<id>spring-milestone</id>
-			<name>Spring Maven MILESTONE Repository</name>
-			<url>http://repo.springframework.org/milestone</url>
-		</repository>
-	</repositories>
 
 	<pluginRepositories>
 		<pluginRepository>
