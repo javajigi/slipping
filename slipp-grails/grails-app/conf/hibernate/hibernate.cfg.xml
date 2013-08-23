@@ -1,0 +1,15 @@
+<!DOCTYPE hibernate-configuration SYSTEM
+  "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.release_mode">after_transaction</property>
+
+        <property name="hibernate.jdbc.batch_size">1</property>
+
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.use_sql_comments">true</property>
+
+        <mapping class="net.slipp.User" />
+    </session-factory>
+</hibernate-configuration>
