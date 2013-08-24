@@ -12,6 +12,7 @@ import net.slipp.service.audit.AuditService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
@@ -45,6 +46,7 @@ public class UserService {
 		return user;
 	}
 
+	@Transactional(rollbackFor=PasswordMismatchException.class)
 	public User login(String userId, String password) throws SQLException, PasswordMismatchException {
 		auditService.log(new AuditObject(userId, LOGIN_TRY));
 		User user = userDao.findByUserId(userId);
