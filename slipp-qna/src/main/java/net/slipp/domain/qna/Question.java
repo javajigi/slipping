@@ -19,19 +19,14 @@ public class Question {
 
 	private int answerCount = 0;
 
-	private int showCount = 0;
-
-	private String plainTags;
-
 	public Question() {
 	}
 	
-	Question(String writerId, String writerName, String title, String contents, String plainTags) {
+	Question(String writerId, String writerName, String title, String contents) {
 		this.writerId = writerId;
 		this.writerName = writerName;
 		this.title = title;
-		setContents(contents);
-		this.plainTags = plainTags;
+		this.contents = contents;
 	}
 
 	public int getAnswerCount() {
@@ -75,22 +70,6 @@ public class Question {
 		this.title = title;
 	}
 
-	public int getShowCount() {
-		return showCount;
-	}
-
-	public void setShowCount(int showCount) {
-		this.showCount = showCount;
-	}
-
-	public String getPlainTags() {
-		return plainTags;
-	}
-
-	public void setPlainTags(String plainTags) {
-		this.plainTags = plainTags;
-	}
-
 	public void setAnswerCount(int answerCount) {
 		this.answerCount = answerCount;
 	}
@@ -106,13 +85,12 @@ public class Question {
 	public void update(Question newQuestion) {
 		this.title = newQuestion.title;
 		this.contents = newQuestion.contents;
-		this.plainTags = newQuestion.plainTags;
 	}
 
 	@Override
 	public String toString() {
 		return "Question [questionId=" + questionId + ", writerId=" + writerId + ", writerName=" + writerName
 				+ ", title=" + title + ", contents=" + contents + ", createdDate=" + createdDate + ", answerCount="
-				+ answerCount + ", showCount=" + showCount + ", plainTags=" + plainTags + "]";
+				+ answerCount + "]";
 	}
 }

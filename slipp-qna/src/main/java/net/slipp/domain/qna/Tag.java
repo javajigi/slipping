@@ -1,18 +1,17 @@
 package net.slipp.domain.qna;
 
-
 public class Tag {
 	private Long tagId;
 
 	private String name;
+	
+	private boolean pooled;
 
 	private int taggedCount = 0;
 
-	public Tag() {
-	}
-
-	public Tag(String name) {
+	private Tag(String name, boolean pooled) {
 		this.name = name;
+		this.pooled = pooled;
 	}
 
 	public Long getTagId() {
@@ -27,12 +26,24 @@ public class Tag {
 		return taggedCount;
 	}
 	
+	public boolean isPooled() {
+		return pooled;
+	}
+	
 	public void tagged() {
 		taggedCount += 1;
 	}
 	
 	public void detagged() {
 		taggedCount -= 1;
+	}
+	
+	public static Tag pooledTag(String name) {
+		return new Tag(name, true);
+	}
+	
+	public static Tag newTag(String name) {
+		return new Tag(name, false);
 	}
 
 	@Override
