@@ -8,6 +8,8 @@ import net.slipp.domain.user.User;
 import org.junit.Test;
 
 public class UserTest {
+	public static User JAVAJIGI = new User("javajigi", "password", "name", "javajigi@slipp.net", true);
+	
 	@Test
 	public void loginSuccess() throws Exception {
 		User expected = new User("userId", "password", "name", "javajigi@slipp.net", true);

@@ -1,8 +1,6 @@
 package net.slipp.domain.qna;
 
 public class Tag {
-	private Long tagId;
-
 	private String name;
 	
 	private boolean pooled;
@@ -12,10 +10,6 @@ public class Tag {
 	private Tag(String name, boolean pooled) {
 		this.name = name;
 		this.pooled = pooled;
-	}
-
-	public Long getTagId() {
-		return tagId;
 	}
 
 	public String getName() {
@@ -48,7 +42,7 @@ public class Tag {
 
 	@Override
 	public String toString() {
-		return "Tag [tagId=" + tagId + ", name=" + name + ", taggedCount=" + taggedCount + "]";
+		return "Tag [name=" + name + ", taggedCount=" + taggedCount + "]";
 	}
 
 	@Override
@@ -56,7 +50,7 @@ public class Tag {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((tagId == null) ? 0 : tagId.hashCode());
+		result = prime * result + (pooled ? 1231 : 1237);
 		return result;
 	}
 
@@ -74,10 +68,7 @@ public class Tag {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (tagId == null) {
-			if (other.tagId != null)
-				return false;
-		} else if (!tagId.equals(other.tagId))
+		if (pooled != other.pooled)
 			return false;
 		return true;
 	}
