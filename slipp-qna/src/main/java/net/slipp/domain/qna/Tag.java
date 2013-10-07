@@ -1,8 +1,21 @@
 package net.slipp.domain.qna;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Tag {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long tagId;
+	
+	@Column(name = "name", length = 50, unique = true, nullable = false)
 	private String name;
 	
+	@Column(name = "pooled", nullable = false)
 	private boolean pooled;
 
 	private int taggedCount = 0;
