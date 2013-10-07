@@ -23,11 +23,11 @@ import javax.persistence.OrderBy;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import net.slipp.domain.user.User;
+
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
-import net.slipp.domain.user.User;
 
 @Entity
 public class Question {
@@ -61,6 +61,8 @@ public class Question {
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
     @OrderBy("answerId ASC")
     private List<Answer> answers;
+    
+    private int showCount = 0;
 
 	public Question(User writer, String title, String contents, Set<Tag> tags) {
 		this.writer = writer;
@@ -114,6 +116,14 @@ public class Question {
 	public void update(String title, String contents, Set<Tag> updateTags) {
 		processTags(updateTags);
 		this.tags = updateTags;
+	}
+	
+	public void showed() {
+		this.showCount++;
+	}
+	
+	public int getShowCount() {
+		return showCount;
 	}
 	
 	@Override
